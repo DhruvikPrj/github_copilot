@@ -1,3 +1,18 @@
+// index re-export for backwards compatibility
+export * as dateUtils from "./dateUtils.js";
+export * as stringUtils from "./stringUtils.js";
+export * as mathUtils from "./mathUtils.js";
+export * as arrayUtils from "./arrayUtils.js";
+export * as userUtils from "./userUtils.js";
+export * as logUtils from "./logUtils.js";
+
+// default export for quick imports
+export { default as date } from "./dateUtils.js";
+export { default as string } from "./stringUtils.js";
+export { default as math } from "./mathUtils.js";
+export { default as array } from "./arrayUtils.js";
+export { default as user } from "./userUtils.js";
+export { default as log } from "./logUtils.js";
 // utils.js — Before Refactor (Deliberately messy code)
 
 import moment from "moment";
