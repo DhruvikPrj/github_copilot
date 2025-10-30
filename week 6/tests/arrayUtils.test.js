@@ -15,4 +15,13 @@ describe("arrayUtils", () => {
   test("intersection", () => {
     expect(intersection([1, 2, 3], [2, 4])).toEqual([2]);
   });
+
+  test("flatten non-array and chunk edge cases and merge behavior", () => {
+    expect(flatten(null)).toEqual([]);
+    expect(chunk([1, 2, 3], 2)).toEqual([[1, 2], [3]]);
+    expect(chunk([1,2,3], 0)).toEqual([]);
+    expect(merge([2,1], [1,3], false)).toEqual([2,1,1,3]);
+    expect(merge([2,1], [1,3], true)).toEqual([2,1,3]);
+    expect(intersection(null, [1,2])).toEqual([]);
+  });
 });

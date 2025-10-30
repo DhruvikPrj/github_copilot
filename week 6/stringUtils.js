@@ -21,7 +21,9 @@ export function capitalizeFirstLetter(str) {
 export function capitalizeAllWords(str) {
   if (!str) return "";
   return String(str)
+    .trim()
     .split(/\s+/)
+    .filter(Boolean)
     .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1) : ""))
     .join(" ");
 }

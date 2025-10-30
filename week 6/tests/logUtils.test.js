@@ -17,6 +17,7 @@ describe("logUtils (side-effecting)", () => {
     info("hello");
     warn("hey");
     debug({ a: 1 });
+    debug("a string debug");
     error(new Error("bad"));
     expect(console.log).toHaveBeenCalled();
     expect(console.warn).toHaveBeenCalled();

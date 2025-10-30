@@ -16,4 +16,17 @@ describe("stringUtils", () => {
     expect(isValidEmail("bad@.com")).toBe(false);
     expect(slugify("Hello World! 2020")).toBe("hello-world-2020");
   });
+
+  test("edge cases: empty and multiple spaces", () => {
+    expect(capitalizeAllWords("")).toBe("");
+    expect(capitalizeAllWords("  multiple   spaces ")).toBe("Multiple Spaces");
+    expect(slugify("  Trim THIS!! ")).toBe("trim-this");
+    expect(isValidEmail(null)).toBe(false);
+  });
+
+  test("truncate behavior for exact length and types", () => {
+    expect(truncateText("hello", 5)).toBe("hello");
+    expect(truncateText("hello world", 5)).toBe("hello...");
+    expect(capitalizeFirstLetter(123)).toBe("123");
+  });
 });

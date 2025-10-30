@@ -1,4 +1,5 @@
 import { getUserFullName, getDisplayName, isUserActive, getUserInitials, getRandomUser } from "../userUtils.js";
+import { jest } from "@jest/globals";
 
 describe("userUtils", () => {
   test("full name and display name fallbacks", () => {
@@ -14,7 +15,19 @@ describe("userUtils", () => {
     expect(getUserInitials({})).toBe("");
   });
 
-  test("getRandomUser returns null for invalid", () => {
+  test("getRandomUser returns null for invalid and deterministic for non-empty", () => {
     expect(getRandomUser([])).toBeNull();
+    const users = [{ id: 1 }, { id: 2 }, { id: 3 }];
+    const spy = jest.spyOn(Math, "random").mockReturnValue(0.1);
+    expect(getRandomUser(users)).toBe(users[0]);
+    spy.mockRestore();
+  });
+
+  test("name fallbacks and initials edge cases", () => {
+    expect(getUserFullName({ firstName: 'Only' })).toBe('Only');
+    expect(getUserFullName({ lastName: 'Surname' })).toBe('Surname');
+    expect(getDisplayName({ email: 'e@x.com' })).toBe('e@x.com');
+    expect(isUserActive(null)).toBe(false);
+    expect(getUserInitials({ firstName: 'Solo' })).toBe('S');
   });
 });
