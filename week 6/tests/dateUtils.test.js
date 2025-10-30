@@ -39,4 +39,9 @@ describe("dateUtils", () => {
     expect(out).toMatch(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
     expect(formatShortDate(new Date('1999-12-31'))).toMatch(/^\d{2}\/\d{2}\/\d{2}$/);
   });
+
+  test("getMonthName boundary cases", () => {
+    expect(getMonthName(11)).toBe('December');
+    expect(getMonthName(-5)).toBe('');
+  });
 });

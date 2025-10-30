@@ -36,4 +36,8 @@ describe("userUtils", () => {
     expect(getUserInitials({ lastName: 'Bond' })).toBe('B');
     expect(isUserActive({ status: 'inactive' })).toBe(false);
   });
+
+  test("display name prefers real name when available", () => {
+    expect(getDisplayName({ firstName: 'A', lastName: 'B', username: 'u' })).toBe('A B');
+  });
 });

@@ -31,4 +31,10 @@ describe("arrayUtils", () => {
     expect(flatten([[], [1], []])).toEqual([1]);
     expect(unique(["a","a","b"]).sort()).toEqual(["a","b"].sort());
   });
+
+  test("chunk with exact and non-integer sizes", () => {
+    expect(chunk([1,2,3], 3)).toEqual([[1,2,3]]);
+    // non-integer size should still work as JS will coerce; ensure it doesn't throw
+    expect(chunk([1,2,3,4], 2.5)).toEqual([[1,2],[3,4]]);
+  });
 });
