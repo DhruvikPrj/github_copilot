@@ -30,4 +30,10 @@ describe("userUtils", () => {
     expect(isUserActive(null)).toBe(false);
     expect(getUserInitials({ firstName: 'Solo' })).toBe('S');
   });
+
+  test("getUserFullName null and initials with only last name", () => {
+    expect(getUserFullName(null)).toBe("");
+    expect(getUserInitials({ lastName: 'Bond' })).toBe('B');
+    expect(isUserActive({ status: 'inactive' })).toBe(false);
+  });
 });

@@ -31,4 +31,12 @@ describe("dateUtils", () => {
     expect(formatDateTime(d).startsWith('2021-02-03')).toBe(true);
     expect(formatDate(1612313106000)).toBe('2021-02-03');
   });
+
+  test("formatDateTime full pattern and formatShortDate variants", () => {
+    const d = new Date('2022-03-04T05:06:07Z');
+    const out = formatDateTime(d);
+    // Ensure pattern includes full date and time "YYYY-MM-DD HH:MM:SS"
+    expect(out).toMatch(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
+    expect(formatShortDate(new Date('1999-12-31'))).toMatch(/^\d{2}\/\d{2}\/\d{2}$/);
+  });
 });

@@ -24,4 +24,11 @@ describe("arrayUtils", () => {
     expect(merge([2,1], [1,3], true)).toEqual([2,1,3]);
     expect(intersection(null, [1,2])).toEqual([]);
   });
+
+  test("chunk and flatten variations", () => {
+    expect(chunk([1,2,3], 1)).toEqual([[1],[2],[3]]);
+    expect(chunk([1,2], 5)).toEqual([[1,2]]);
+    expect(flatten([[], [1], []])).toEqual([1]);
+    expect(unique(["a","a","b"]).sort()).toEqual(["a","b"].sort());
+  });
 });
