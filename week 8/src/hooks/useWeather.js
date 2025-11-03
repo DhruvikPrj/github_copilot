@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { getCache, setCache } from "../utils/cache";
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+const API_KEY = "b491b6be2f77bd93febb0ee38b91e6a4";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 function buildUrl(city) {

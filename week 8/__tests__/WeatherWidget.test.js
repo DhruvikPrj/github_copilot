@@ -86,12 +86,17 @@ describe("WeatherWidget", () => {
     // populate cache first
     const city = "CachedCity";
     const mock = {
-      data: { main: { temp: 1, humidity: 2 }, weather: [{ description: "sun" }] },
+      data: {
+        main: { temp: 1, humidity: 2 },
+        weather: [{ description: "sun" }],
+      },
     };
     axios.get.mockResolvedValueOnce(mock);
     const { rerender, unmount } = render(<WeatherWidget cityName={city} />);
     // wait for initial fetch to populate cache
-    await waitFor(() => expect(screen.getByTestId("weather-widget")).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByTestId("weather-widget")).toBeInTheDocument()
+    );
 
     // now rerender (this should read from cache and register a cleanup)
     axios.get.mockClear();
